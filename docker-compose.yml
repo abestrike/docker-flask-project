@@ -1,0 +1,9 @@
+services:
+  flask-web:
+    build: .
+    container_name: flask-web
+    ports:
+      - "5000:5000"
+    environment:
+      APP_ENV: local
+      APP_VERSION: 1.2.0
