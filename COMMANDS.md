@@ -13,3 +13,7 @@ docker run -d --name flask-web -p 5000:5000 \
   docker-flask-project
 curl http://localhost:5000/version
 docker logs flask-web
+docker compose down
+docker compose up -d --build
+curl http://localhost:5000/version
+docker compose logs --tail=30
