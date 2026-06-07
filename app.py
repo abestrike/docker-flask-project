@@ -20,7 +20,7 @@ def home():
 @app.route("/health")
 def health():
     return {
-        "status": "ok",
+        "status": "healthy",
         "app": "docker-flask-project",
         "environment": APP_ENV
     }
@@ -39,7 +39,3 @@ def info():
         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "environment": APP_ENV
     }
-
-if __name__ == "__main__":
-    print(f"Starting app in {APP_ENV} mode, version {APP_VERSION}")
-    app.run(host="0.0.0.0", port=5000)
