@@ -7,7 +7,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Download project
         uses: actions/checkout@v6
@@ -23,3 +25,13 @@ jobs:
         run: |
           sleep 5
           bash check-app.sh
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+         registry: ghcr.io
+         username: ${{ github.actor }}
+         password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish Docker image
+        run: |
+          docker tag docker-flask-project-flask-web:latest ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:latest
