@@ -11,7 +11,7 @@ APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
 @app.route("/")
 def home():
     return f"""
-    <h1>Hello from Flask inside Docker!</h1>
+    <h1>Welcome to Flask App - Version 2!</h1>
     <p>This is my Dockerized Python Flask web app.</p>
     <p>Environment: {APP_ENV}</p>
     <p>App version: {APP_VERSION}</p>
